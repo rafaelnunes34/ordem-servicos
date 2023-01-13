@@ -1,6 +1,8 @@
 package com.rafaelnunes.serviceorder.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -8,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -22,6 +25,9 @@ public class BrandVehicle implements Serializable {
 	
 	@Column(nullable = false, length = 20)
 	private String name;
+	
+	@OneToMany(mappedBy = "brand")
+	private List<ModelVehicle> models = new ArrayList<>();
 	
 	public BrandVehicle() {
 	}
@@ -45,6 +51,10 @@ public class BrandVehicle implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public List<ModelVehicle> getModels() {
+		return models;
 	}
 
 	@Override

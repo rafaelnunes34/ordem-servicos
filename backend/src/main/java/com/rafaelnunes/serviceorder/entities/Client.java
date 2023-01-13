@@ -35,6 +35,9 @@ public class Client implements Serializable {
 	@OneToMany(mappedBy = "client")
 	private List<Vehicle> vehicles = new ArrayList<>();
 	
+	@OneToMany(mappedBy = "client")
+	private List<Order> orders = new ArrayList<>();
+	
 	public Client() {
 	}
 
@@ -81,6 +84,10 @@ public class Client implements Serializable {
 		return vehicles;
 	}
 	
+	public List<Order> getOrders() {
+		return orders;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);

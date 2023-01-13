@@ -2,8 +2,11 @@ package com.rafaelnunes.serviceorder.entities;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -12,6 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -26,6 +30,8 @@ public class Order implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Instant moment;
 	
 	@Enumerated(EnumType.STRING)
@@ -45,6 +51,9 @@ public class Order implements Serializable {
 	
 	@OneToOne(mappedBy = "order")
 	private Payment payment;
+	
+	@OneToMany(mappedBy = "id.order")
+	private Set<OrderServiceItem> items = new HashSet<>();
 	
 	public Order() {
 	}
@@ -114,6 +123,10 @@ public class Order implements Serializable {
 
 	public void setPayment(Payment payment) {
 		this.payment = payment;
+	}
+	
+	public Set<OrderServiceItem> getItems() {
+		return items;
 	}
 
 	@Override

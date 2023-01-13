@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -23,12 +25,17 @@ public class ModelVehicle implements Serializable {
 	@Column(nullable = false, length = 20)
 	private String name;
 	
+	@ManyToOne
+	@JoinColumn(name = "vehicle_brand_id")
+	private BrandVehicle brand;
+	
 	public ModelVehicle() {
 	}
 
-	public ModelVehicle(Long id, String name) {
+	public ModelVehicle(Long id, String name, BrandVehicle brand) {
 		this.id = id;
 		this.name = name;
+		this.brand = brand;
 	}
 
 	public Long getId() {
@@ -45,6 +52,14 @@ public class ModelVehicle implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public BrandVehicle getBrand() {
+		return brand;
+	}
+
+	public void setBrand(BrandVehicle brand) {
+		this.brand = brand;
 	}
 
 	@Override

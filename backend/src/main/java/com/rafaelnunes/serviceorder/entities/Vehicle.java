@@ -1,6 +1,8 @@
 package com.rafaelnunes.serviceorder.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -10,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -34,25 +37,22 @@ public class Vehicle implements Serializable {
 	private ModelVehicle model;
 	
 	@ManyToOne
-	@JoinColumn(name = "brand_id")
-	private BrandVehicle brand;
-	
-	@ManyToOne
 	@JoinColumn(name = "client_id")
 	private Client client;
+	
+	@OneToMany(mappedBy = "vehicle")
+	private List<Order> orders = new ArrayList<>();
 	
 	public Vehicle() {
 	}
 
-	public Vehicle(Long id, String licensePlate, String year, String color, ModelVehicle model, BrandVehicle brand,
-			Client client) {
+	public Vehicle(Long id, String licensePlate, String year, String color, ModelVehicle model, Client client) {
 		super();
 		this.id = id;
 		this.licensePlate = licensePlate;
 		this.year = year;
 		this.color = color;
 		this.model = model;
-		this.brand = brand;
 		this.client = client;
 	}
 
@@ -96,20 +96,16 @@ public class Vehicle implements Serializable {
 		this.model = model;
 	}
 
-	public BrandVehicle getBrand() {
-		return brand;
-	}
-
-	public void setBrand(BrandVehicle brand) {
-		this.brand = brand;
-	}
-
 	public Client getClient() {
 		return client;
 	}
 
 	public void setClient(Client client) {
 		this.client = client;
+	}
+	
+	public List<Order> getOrders() {
+		return orders;
 	}
 
 	@Override

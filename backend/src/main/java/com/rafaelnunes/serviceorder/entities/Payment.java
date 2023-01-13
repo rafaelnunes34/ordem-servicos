@@ -23,6 +23,8 @@ public class Payment implements Serializable {
 	
 	@Id
 	private Long id;
+	
+	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Instant moment;
 	
 	@Enumerated(EnumType.STRING)
