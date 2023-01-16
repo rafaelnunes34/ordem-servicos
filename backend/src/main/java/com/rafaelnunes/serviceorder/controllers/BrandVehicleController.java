@@ -3,6 +3,8 @@ package com.rafaelnunes.serviceorder.controllers;
 import java.net.URI;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -37,13 +39,13 @@ public class BrandVehicleController {
 	}
 	
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<BrandVehicleDTO> findById(@RequestBody BrandVehicleDTO dto, @PathVariable Long id) {
+	public ResponseEntity<BrandVehicleDTO> findById(@Valid @RequestBody BrandVehicleDTO dto, @PathVariable Long id) {
 		dto = service.update(dto, id);
 		return ResponseEntity.ok().body(dto);
 	}
 	
 	@PostMapping
-	public ResponseEntity<BrandVehicleDTO> insert(@RequestBody BrandVehicleDTO dto) {
+	public ResponseEntity<BrandVehicleDTO> insert(@Valid @RequestBody BrandVehicleDTO dto) {
 		dto = service.insert(dto);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
 		return ResponseEntity.created(uri).body(dto);
