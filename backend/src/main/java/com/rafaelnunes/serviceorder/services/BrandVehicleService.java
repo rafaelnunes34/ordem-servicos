@@ -7,6 +7,7 @@ import javax.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,7 +26,7 @@ public class BrandVehicleService {
 	
 	@Transactional(readOnly = true)
 	public List<BrandVehicleDTO> findAll() {
-		List<BrandVehicle> list = repository.findAll();
+		List<BrandVehicle> list = repository.findAll(Sort.by("name"));
 		return list.stream().map(x -> new BrandVehicleDTO(x)).toList();
 	}
 	
