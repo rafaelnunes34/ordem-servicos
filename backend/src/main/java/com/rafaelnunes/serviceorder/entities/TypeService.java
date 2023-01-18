@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_service")
-public class Service implements Serializable {
+public class TypeService implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -26,10 +26,10 @@ public class Service implements Serializable {
 	@Column(nullable = false, precision = 2)
 	private Double price;
 	
-	public Service() {
+	public TypeService() {
 	}
 
-	public Service(Long id, String description, Double price) {
+	public TypeService(Long id, String description, Double price) {
 		this.id = id;
 		this.description = description;
 		this.price = price;
@@ -72,7 +72,7 @@ public class Service implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Service other = (Service) obj;
+		TypeService other = (TypeService) obj;
 		return Objects.equals(id, other.id);
 	}
 }

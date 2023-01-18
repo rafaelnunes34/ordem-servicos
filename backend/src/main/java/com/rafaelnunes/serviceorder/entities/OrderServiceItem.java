@@ -26,7 +26,7 @@ public class OrderServiceItem implements Serializable {
 	public OrderServiceItem() {
 	}
 
-	public OrderServiceItem(Order order, Service service, Integer unity, Double price) {
+	public OrderServiceItem(Order order, TypeService service, Integer unity, Double price) {
 		id.setOrder(order);
 		id.setService(service);
 		this.unity = unity;
@@ -41,11 +41,11 @@ public class OrderServiceItem implements Serializable {
 		id.setOrder(order);
 	}
 	
-	public Service getService() {
+	public TypeService getService() {
 		return id.getService();
 	}
 	
-	public void setService(Service service) {
+	public void setService(TypeService service) {
 		id.setService(service);
 	}
 	

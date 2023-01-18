@@ -18,7 +18,7 @@ public class OrderServiceItemPK implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name = "service_id")
-	private Service service;
+	private TypeService service;
 	
 	public OrderServiceItemPK() {
 	}
@@ -29,10 +29,10 @@ public class OrderServiceItemPK implements Serializable {
 	public void setOrder(Order order) {
 		this.order = order;
 	}
-	public Service getService() {
+	public TypeService getService() {
 		return service;
 	}
-	public void setService(Service service) {
+	public void setService(TypeService service) {
 		this.service = service;
 	}
 
