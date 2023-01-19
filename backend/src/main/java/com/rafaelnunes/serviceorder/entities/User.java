@@ -19,9 +19,11 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.security.core.userdetails.UserDetails;
+
 @Entity
 @Table(name = "tb_user")
-public class User implements Serializable {
+public class User implements UserDetails, Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -42,7 +44,7 @@ public class User implements Serializable {
 	@JoinTable(name = "tb_user_role", 
 			joinColumns = @JoinColumn(name = "user_id"),
 			inverseJoinColumns = @JoinColumn(name = "role_id"))
-	private Set<Role> roles = new HashSet<>();
+	private Set<Role> authorities = new HashSet<>();
 	
 	@OneToMany(mappedBy = "user")
 	private List<Order> orders = new ArrayList<>();
@@ -80,7 +82,8 @@ public class User implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
+	
+	@Override
 	public String getPassword() {
 		return password;
 	}
@@ -89,10 +92,11 @@ public class User implements Serializable {
 		this.password = password;
 	}
 	
-	public Set<Role> getRoles() {
-		return roles;
+	@Override
+	public Set<Role> getAuthorities() {
+		return authorities;
 	}
-	
+
 	public List<Order> getOrders() {
 		return orders;
 	}
@@ -112,5 +116,31 @@ public class User implements Serializable {
 			return false;
 		User other = (User) obj;
 		return Objects.equals(id, other.id);
+	}
+
+
+	@Override
+	public String getUsername() {
+		return this.getEmail();
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return true;
 	}
 }
