@@ -30,6 +30,8 @@ public class Vehicle implements Serializable {
 	
 	@Column(name = "year_manufacture", nullable = false, length = 10)
 	private String year;
+	
+	@Column(nullable = false, length = 20)
 	private String color;
 	
 	@ManyToOne
