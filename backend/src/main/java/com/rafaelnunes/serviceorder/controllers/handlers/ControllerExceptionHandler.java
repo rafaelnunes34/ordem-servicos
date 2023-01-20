@@ -15,6 +15,7 @@ import com.rafaelnunes.serviceorder.dto.CustomError;
 import com.rafaelnunes.serviceorder.dto.ValidationError;
 import com.rafaelnunes.serviceorder.services.exceptions.DatabaseException;
 import com.rafaelnunes.serviceorder.services.exceptions.ResourceNotFoundException;
+import com.rafaelnunes.serviceorder.services.exceptions.UnauthorizedException;
 
 @ControllerAdvice
 public class ControllerExceptionHandler {
@@ -29,6 +30,13 @@ public class ControllerExceptionHandler {
 	@ExceptionHandler(DatabaseException.class)
 	public ResponseEntity<CustomError> database(DatabaseException ex, HttpServletRequest request) {
 		HttpStatus status = HttpStatus.BAD_REQUEST;
+		CustomError error = new CustomError(Instant.now(), status.value(), ex.getMessage(), request.getRequestURI());
+		return ResponseEntity.status(status).body(error);
+	}
+	
+	@ExceptionHandler(UnauthorizedException.class)
+	public ResponseEntity<CustomError> unauthorized(UnauthorizedException ex, HttpServletRequest request) {
+		HttpStatus status = HttpStatus.UNAUTHORIZED;
 		CustomError error = new CustomError(Instant.now(), status.value(), ex.getMessage(), request.getRequestURI());
 		return ResponseEntity.status(status).body(error);
 	}
