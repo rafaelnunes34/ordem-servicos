@@ -1,8 +1,8 @@
 INSERT INTO tb_role (authority) VALUES ('ADMINISTRADOR');
 INSERT INTO tb_role (authority) VALUES ('ATENDENTE');
 
-INSERT INTO tb_user (name, email, password) VALUES ('Rafael Nunes', 'rafael@gmail.com', '123456');
-INSERT INTO tb_user (name, email, password) VALUES ('Pedro Alves', 'pedro@gmail.com', '123456');
+INSERT INTO tb_user (name, email, password) VALUES ('Rafael Nunes', 'rafael@gmail.com', '$2a$10$swE365Eh3qyFIF3GS0sDJedK.1OJ4Y7Zt1HmphC/eC3c7BVQctIH2');
+INSERT INTO tb_user (name, email, password) VALUES ('Pedro Alves', 'pedro@gmail.com', '$2a$10$swE365Eh3qyFIF3GS0sDJedK.1OJ4Y7Zt1HmphC/eC3c7BVQctIH2');
 
 INSERT INTO tb_user_role (user_id, role_id) VALUES (1, 1);
 INSERT INTO tb_user_role (user_id, role_id) VALUES (1, 2);
