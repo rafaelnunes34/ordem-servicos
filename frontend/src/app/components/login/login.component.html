@@ -1,0 +1,46 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="row d-flex justify-content-center mt-5">
+        <div class="col-md-8 col-sm-12">
+            <div class="shadow-lg p-3 mb-5 bg-body rounded">
+                <div class="card">
+                    <div class="card-header">
+                        Login
+                    </div>
+                    <form [formGroup]="formLogin">
+                        <div class="card-body">
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control" id="floatingInput"
+                                    placeholder="name@example.com" formControlName="email">
+                                <label for="floatingInput">Digite seu email</label>
+                                <div class="form-text text-danger" *ngIf="isFormControlInvalid('email')">
+                                    Preencha o campo de email
+                                </div>
+                            </div>
+                            <div class="form-floating">
+                                <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
+                                    formControlName="senha">
+                                <label for="floatingPassword">Digite sua senha</label>
+                                <div class="form-text text-danger" *ngIf="isFormControlInvalid('senha')">
+                                    Preencha o campo de senha
+                                </div>
+                            </div>
+                            <div class="d-grid gap-1 mt-2">
+                                <button class="btn btn-success mt-2" (click)="submitForm()"
+                                    [disabled]="!formLogin.valid">
+                                    <div *ngIf="!isLoading">Entrar</div>
+                                    <div *ngIf="isLoading">
+                                        <div class="spinner-border spinner-border-sm" role="status">
+                                            <span class="visually-hidden">Loading...</span>
+                                        </div>
+                                        Carregando
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
