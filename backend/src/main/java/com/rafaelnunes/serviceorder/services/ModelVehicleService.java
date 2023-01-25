@@ -29,8 +29,8 @@ public class ModelVehicleService {
 	private BrandVehicleRepository brandVehicleRepository;
 	
 	@Transactional(readOnly = true)
-	public List<ModelVehicleDTO> findAll() {
-		List<ModelVehicle> list = repository.findAll();
+	public List<ModelVehicleDTO> findVehicleByModel(String modelVehicle) {
+		List<ModelVehicle> list = repository.findVehicleByModel(modelVehicle);
 		return list.stream().map(x -> new ModelVehicleDTO(x)).toList();
 	}
 	

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -28,8 +29,9 @@ public class ModelVehicleController {
 	private ModelVehicleService service;
 	
 	@GetMapping
-	public ResponseEntity<List<ModelVehicleDTO>> findAll() {
-		return ResponseEntity.ok().body(service.findAll());
+	public ResponseEntity<List<ModelVehicleDTO>> findAll(
+			@RequestParam(name = "modelVehicle", defaultValue = "") String modelVehicle) {
+		return ResponseEntity.ok().body(service.findVehicleByModel(modelVehicle));
 	}
 	
 	@GetMapping(value = "/{id}")
