@@ -29,7 +29,10 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(email, senha).subscribe(
       {next: (response) => {
-        this.isLoading = true;
+        setTimeout(() => {
+          this.isLoading = true;
+        }, 3000);
+  
         this.route.navigate(['']);
         this.formLogin.reset();
       },
