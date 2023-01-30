@@ -1,29 +1,131 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 col-sm-12">
-            <div class="card-group">
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="../../../assets/images/cliente.png" class="img-fluid rounded-start p-2" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">Cadastro Clientes</h5>
-                                <p class="card-text">Area para realizar o cadastro dos clientes ou alterações.</p>
-                                <div class="row mt-5">
-                                    <div class="col d-flex justify-content-end align-items-end">
-                                        <button class="btn btn-primary" (click)="navigateClients()">
-                                            <i class="bi bi-send"></i>
-                                            Avançar
-                                        </button>
-                                    </div>
-                                </div>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb alert alert-secondary">
+        <li class="breadcrumb-item active" aria-current="page">Home</li>
+    </ol>
+</nav>
+<div class="row">
+    <div class="col-md-6 col-sm-12"> <!--Clientes-->
+        <div class="card-group">
+            <div class="card mb-3 shadow-sm p-3 mb-5 bg-body rounded" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="../../../assets/images/lista-de-controle.png" class="img-fluid rounded-start p-2"
+                            alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Clientes</h5>
+                            <p class="card-text">Área para realizar cadastro dos clientes ou alterações.</p>
+                            <div class="row mt-5">
+                                <button class="btn btn-info" (click)="navigateClients()">
+                                    <i class="bi bi-send"></i>
+                                    Avançar
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div> <!--Fim Clientes-->
+    <div class="col-md-6 col-sm-12"> <!--Ordem Serviço-->
+        <div class="card-group">
+            <div class="card mb-3 shadow-sm p-3 mb-5 bg-body rounded" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="../../../assets/images/manutencao.png" class="img-fluid rounded-start p-2"
+                            alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Ordem de Serviço</h5>
+                            <p class="card-text">Área para realizar cadastro das ordem de seriços.</p>
+                            <div class="row mt-5">
+                                <button class="btn btn-info" (click)="navigateClients()">
+                                    <i class="bi bi-send"></i>
+                                    Avançar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- Fim Ordem Serviço-->
+</div>
+<div class="row">
+    <div class="col-md-6 col-sm-12"> <!--Serviços-->
+        <div class="card-group">
+            <div class="card mb-3 shadow-sm p-3 mb-5 bg-body rounded" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="../../../assets/images/servico.png" class="img-fluid rounded-start p-2"
+                            alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Serviços</h5>
+                            <p class="card-text">Área para realizar cadastro dos serviços ou alterações.</p>
+                            <div class="row mt-5">
+                                <button class="btn btn-info" (click)="navigateClients()">
+                                    <i class="bi bi-send"></i>
+                                    Avançar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!--Fim Serviços-->
+    <div class="col-md-6 col-sm-12"> <!--Veiculos-->
+        <div class="card-group">
+            <div class="card mb-3 shadow-sm p-3 mb-5 bg-body rounded" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="../../../assets/images/veiculo.png" class="img-fluid rounded-start p-2"
+                            alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Veículo</h5>
+                            <p class="card-text">Área para realizar cadastro dos veículos ou alterações.</p>
+                            <div class="row mt-5">
+                                <button class="btn btn-info" (click)="navigateClients()">
+                                    <i class="bi bi-send"></i>
+                                    Avançar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- Fim Veiculos-->
+</div>
+<div class="row">
+    <div class="col-md-6 col-sm-12"> <!--Dashboard-->
+        <div class="card-group">
+            <div class="card mb-3 shadow-sm p-3 mb-5 bg-body rounded" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="../../../assets/images/servico-automotivo.png" class="img-fluid rounded-start p-2"
+                            alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Dashboard</h5>
+                            <p class="card-text">Área para consultar gráficos financeiros .</p>
+                            <div class="row mt-5">
+                                <button class="btn btn-info" (click)="navigateClients()">
+                                    <i class="bi bi-send"></i>
+                                    Avançar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- Fim Dashboard-->
 </div>

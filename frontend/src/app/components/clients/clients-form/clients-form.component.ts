@@ -34,6 +34,10 @@ export class ClientsFormComponent implements OnInit {
     this.vehicle = new Vehicle();
   }
 
+  public proximo(): void {
+    
+  }
+
   public submitClient(): void {
     this.clientService.insert(this.client).subscribe(
       {next: (response: Client) => {
