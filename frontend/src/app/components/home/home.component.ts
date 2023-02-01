@@ -17,4 +17,8 @@ export class HomeComponent implements OnInit {
     this.route.navigate(['clients']);
   }
 
+  public navigateServicos(): void {
+    this.route.navigate(['servicos']);
+  }
+
 }

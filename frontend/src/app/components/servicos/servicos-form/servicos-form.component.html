@@ -1,0 +1,36 @@
+<div class="container">
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb alert alert-secondary">
+            <li class="breadcrumb-item" aria-current="page"><a [routerLink]="''">Home</a></li>
+            <li class="breadcrumb-item" aria-current="page"><a [routerLink]="'/servicos'">Serviços</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Cadastro</li>
+        </ol>
+    </nav>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5>Cadastro</h5>
+        </div>
+        <div class="card-body">
+            <div class="form-floating mb-3" *ngIf="servico.id">
+                <input type="email" class="form-control" id="floatingInput" placeholder="ID" disabled="false"
+                    [(ngModel)]="servico.id">
+                <label for="floatingInput">ID</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="floatingInput" placeholder="Descrição" autocomplete="off"
+                    [(ngModel)]="servico.description">
+                <label for="floatingInput">Descrição</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="floatingInput" placeholder="Preço" autocomplete="off"
+                    [(ngModel)]="servico.price">
+                <label for="floatingInput">Preço</label>
+            </div>
+            <div class="row m-1">
+                <button type="button" class="btn btn-success" (click)="submit()">Enviar</button>
+            </div>
+        </div>
+    </div>
+</div>

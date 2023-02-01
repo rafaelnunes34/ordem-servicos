@@ -12,7 +12,8 @@ const routes: Routes = [
         canActivate: [AuthGuard],
         children: [
             {path: "", component: HomeComponent},
-            {path: 'clients', loadChildren: () => import('./components/clients/clients.module').then(m => m.ClientsModule) }
+            {path: 'clients', loadChildren: () => import('./components/clients/clients.module').then(m => m.ClientsModule) },
+            {path: 'servicos', loadChildren: () => import('./components/servicos/servicos.module').then(m => m.ServicosModule) }
         ]
     },
     { path: "**", redirectTo: "login"}
