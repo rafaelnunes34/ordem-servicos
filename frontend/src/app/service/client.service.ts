@@ -16,7 +16,15 @@ export class ClientService {
     return this.http.get<ClientResponse>(`${environment.API_URL}/clients?&sort=name,asc`);
   }
 
+  public findById(clientId: number): Observable<Client> {
+    return this.http.get<Client>(`${environment.API_URL}/clients/${clientId}`);
+  }
+
   public insert(client: Client): Observable<Client> {
     return this.http.post<Client>(`${environment.API_URL}/clients`, client);
+  }
+
+  public update(id: number, client: Client): Observable<Client> {
+    return this.http.put<Client>(`${environment.API_URL}/clients/${id}`, client);
   }
 }

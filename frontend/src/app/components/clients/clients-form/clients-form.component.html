@@ -17,13 +17,11 @@
             <ul class="nav nav-tabs nav-fill mb-3" id="ex1" role="tablist">
                 <li class="nav-item" role="presentation">
                     <a class="nav-link" [ngClass]="{'active': tabClient}" id="ex2-tab-1" data-mdb-toggle="tab"
-                        role="tab" aria-controls="ex2-tabs-1" aria-selected="true"
-                        (click)="activeTabClient()">Cliente</a>
+                        role="tab" aria-controls="ex2-tabs-1" aria-selected="true">Cliente</a>
                 </li>
                 <li class="nav-item" role="presentation">
                     <a class="nav-link" [ngClass]="{'active': tabVehicle}" id="ex2-tab-2" data-mdb-toggle="tab"
-                        role="tab" aria-controls="ex2-tabs-2" aria-selected="false"
-                        (click)="activeTabVehicle()">Veiculo</a>
+                        role="tab" aria-controls="ex2-tabs-2" aria-selected="false">Veiculo</a>
                 </li>
 
             </ul>
@@ -48,8 +46,10 @@
                             [(ngModel)]="client.phone">
                         <label for="floatingInput">Telefone</label>
                     </div>
-                    <div class="row">
-                        <button class="btn btn-primary" (click)="activeTabVehicle()">Proximo</button>
+                    <div class="row m-1">
+                        <button class="btn btn-primary" (click)="nextTabVehicle()">
+                            <i class="bi bi-arrow-90deg-right"></i>
+                            Próximo</button>
                     </div>
                 </div>
                 <div class="tab-pane fade" [ngClass]="{'show active': tabVehicle}" id="ex2-tabs-2" role="tabpanel"
@@ -75,10 +75,24 @@
                             [(ngModel)]="modelVehicle.name">
                         <label for="floatingInput">Clique para escolher o Modelo</label>
                     </div>
-                </div>
-
-                <div class="row">
-                    <button class="btn btn-success" (click)="submitClient()">Enviar</button>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row m-1">
+                                <button class="btn btn-primary" (click)="previousTabClient()">
+                                    <i class="bi bi-arrow-90deg-left"></i>
+                                    Voltar
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row m-1">
+                                <button class="btn btn-success" (click)="insertVehicleToClient()">
+                                    <i class="bi bi-check-lg"></i>
+                                    Finalizar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- Tabs content -->
