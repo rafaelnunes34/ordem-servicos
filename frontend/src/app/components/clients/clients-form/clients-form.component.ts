@@ -24,6 +24,7 @@ export class ClientsFormComponent implements OnInit {
   public listVehicles: ModelVehicle[] = [];
   public modelVehicle: ModelVehicle;
   public vehicle: Vehicle;
+  public vehicles: Vehicle[] = [];
 
   constructor(
     private clientService: ClientService,
@@ -63,6 +64,8 @@ export class ClientsFormComponent implements OnInit {
 
   public previousTabClient(): void {
     this.activeTabClient();
+    this.vehicle = new Vehicle();
+    this.modelVehicle = new ModelVehicle();
   }
 
   private insertClient(): void {
@@ -83,13 +86,24 @@ export class ClientsFormComponent implements OnInit {
       {next: (response: Client) => {
         this.client = response;
         if (this.client.id) {
+          this.findVehiclesByClient();
           this.activeTabVehicle();
         }
       }}
     );
   }
 
-  public insertVehicleToClient(): void {
+  public finishRegistration(): void {
+    if(this.vehicle.id) {
+      this.updateVehicle();
+    }
+    else {
+      this.insertVehicleToClient();
+    }
+    this.route.navigate(['clients']);
+  }
+
+  private insertVehicleToClient(): void {
     if (this.modelVehicle) {
       this.vehicle.model = this.modelVehicle;
       if(this.client.id) {
@@ -97,7 +111,6 @@ export class ClientsFormComponent implements OnInit {
           {
             next: (response: Vehicle) => {
               this.vehicle = response;
-              this.route.navigate(['clients']);
             }
           }
         );
@@ -106,6 +119,27 @@ export class ClientsFormComponent implements OnInit {
     else {
       alert("ERROOOOOOO");
     }
+  }
+
+  private updateVehicle(): void {
+    this.vehicleService.updateVehicle(this.vehicle.id, this.vehicle).subscribe(
+      {next: (response: Vehicle) => {
+        this.vehicle = response;
+      }}
+    );
+  }
+
+  private findVehiclesByClient(): void {
+    this.vehicleService.findVehiclesByClient(this.idClient).subscribe(
+      {next: (response: Vehicle[]) => {
+        this.vehicles = response;
+      }}
+    );
+  }
+
+  public selectedVehicle(vehicle: Vehicle): void {
+    this.vehicle = vehicle;
+    this.modelVehicle = vehicle.model;
   }
 
   private findByClient(): void {

@@ -15,4 +15,12 @@ export class VehicleService {
   public insertVehiclebyClient(client: Client, vehicle: Vehicle): Observable<Vehicle> {
     return this.http.put<Vehicle>(`${environment.API_URL}/vehicles/${client.cpf}/insertVehicle`, vehicle);
   }
+
+  public updateVehicle(id: number, vehicle: Vehicle): Observable<Vehicle> {
+    return this.http.put<Vehicle>(`${environment.API_URL}/vehicles/${id}`, vehicle);
+  }
+
+  public findVehiclesByClient(clientId: number): Observable<Vehicle[]> {
+    return this.http.get<Vehicle[]>(`${environment.API_URL}/vehicles/${clientId}/client`);
+  }
 }

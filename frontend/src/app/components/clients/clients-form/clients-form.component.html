@@ -75,6 +75,7 @@
                             [(ngModel)]="modelVehicle.name">
                         <label for="floatingInput">Clique para escolher o Modelo</label>
                     </div>
+
                     <div class="row">
                         <div class="col-md-6">
                             <div class="row m-1">
@@ -86,11 +87,47 @@
                         </div>
                         <div class="col-md-6">
                             <div class="row m-1">
-                                <button class="btn btn-success" (click)="insertVehicleToClient()">
+                                <button class="btn btn-success" (click)="finishRegistration()">
                                     <i class="bi bi-check-lg"></i>
                                     Finalizar
                                 </button>
                             </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-2" *ngIf="vehicles.length > 0">
+                        <h5>Veículos cadastrados</h5>
+                        <div class="table-responsive">
+                            <table class="table table-bordered" width="100%" cellSpacing="0">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Modelo</th>
+                                        <th scope="col">Placa</th>
+                                        <th scope="col">Cor</th>
+                                        <th scope="col">Ano Fab.</th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let objVehicle of vehicles">
+                                        <th scope="row">{{ objVehicle.id }}</th>
+                                        <td>{{ objVehicle.model.name }}</td>
+                                        <td>{{ objVehicle.licensePlate }}</td>
+                                        <td>{{ objVehicle.color }}</td>
+                                        <td>{{ objVehicle.year }}</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-warning"
+                                                (click)="selectedVehicle(objVehicle)"><i
+                                                    class="bi bi-pencil-square"></i></button>
+                                            &nbsp;
+                                            <a class="btn btn-sm btn-danger" href="#"><i class="bi bi-trash"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
