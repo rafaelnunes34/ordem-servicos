@@ -1,5 +1,7 @@
 package com.rafaelnunes.serviceorder.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -54,6 +56,12 @@ public class VehicleService {
 		catch(EmptyResultDataAccessException ex) {
 			throw new ResourceNotFoundException("Recurso não encontrado");
 		}
+	}
+	
+	@Transactional(readOnly = true)
+	public List<VehicleDTO> findVehiclesByClient(Long clientId) {
+		List<Vehicle> list = repository.findVehiclesByIdByClient(clientId);
+		return list.stream().map(x -> new VehicleDTO(x)).toList();
 	}
 	
 	private void copyDtoToEntity(VehicleDTO dto, Vehicle entity) {

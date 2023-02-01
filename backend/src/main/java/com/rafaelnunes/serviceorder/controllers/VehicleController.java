@@ -1,9 +1,12 @@
 package com.rafaelnunes.serviceorder.controllers;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,5 +33,11 @@ public class VehicleController {
 	public ResponseEntity<VehicleDTO> insertVehicleToClient(@PathVariable Long id, @Valid @RequestBody VehicleDTO dto) {
 		dto = service.update(id, dto);
 		return ResponseEntity.ok().body(dto);
+	}
+	
+	@GetMapping(value = "/{clientId}/client")
+	public ResponseEntity<List<VehicleDTO>> findVehiclesByClient(@PathVariable Long clientId) {
+		List<VehicleDTO> list = service.findVehiclesByClient(clientId);
+		return ResponseEntity.ok().body(list);
 	}
 }
