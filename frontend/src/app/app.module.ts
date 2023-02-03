@@ -18,7 +18,7 @@ import { AuthInterceptor } from './security/auth.interceptor';
     NavbarComponent,
     LoginComponent,
     HomeComponent,
-    LayoutComponent
+    LayoutComponent,
   ],
   exports: [
     LoginComponent

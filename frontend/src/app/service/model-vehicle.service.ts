@@ -14,4 +14,16 @@ export class ModelVehicleService {
   public findVehiclesByModel(model: string): Observable<ModelVehicle[]> {
     return this.http.get<ModelVehicle[]>(`${environment.API_URL}/models?modelVehicle=${model}`);
   }
+
+  public findById(id: number):  Observable<ModelVehicle> {
+    return this.http.get<ModelVehicle>(`${environment.API_URL}/models/${id}`);
+  }
+
+  public insert(modelVehicle: ModelVehicle): Observable<ModelVehicle> {
+    return this.http.post<ModelVehicle>(`${environment.API_URL}/models`, modelVehicle);
+  }
+
+  public update(id: number, modelVehicle: ModelVehicle): Observable<ModelVehicle> {
+    return this.http.put<ModelVehicle>(`${environment.API_URL}/models/${id}`, modelVehicle);
+  }
 }

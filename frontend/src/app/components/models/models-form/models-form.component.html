@@ -1,0 +1,42 @@
+<div class="container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb alert alert-secondary">
+            <li class="breadcrumb-item" aria-current="page"><a [routerLink]="''">Home</a></li>
+            <li class="breadcrumb-item" aria-current="page"><a [routerLink]="'/models'">Modelos</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Cadastro</li>
+        </ol>
+    </nav>
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5>Cadastro</h5>
+        </div>
+        <div class="card-body">
+            <form #Form="ngForm" (submit)="submit()">
+                <div class="form-floating mb-3" *ngIf="modelVehicle.id">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="ID" disabled="false"
+                        name="id" [(ngModel)]="modelVehicle.id">
+                    <label for="floatingInput">ID</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="Descrição"
+                        autocomplete="off" name="name" [(ngModel)]="modelVehicle.name">
+                    <label for="floatingInput">Modelo</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="brandId"
+                    [(ngModel)]="brandId"
+                    (ngModelChange)="changeBrandVehicle()" >
+                        <option value="0" selected>Selecione o fabricante</option>
+                        <option *ngFor="let brand of brandsVehicle" [ngValue]="brand.id">
+                            {{ brand.name }}
+                        </option>
+                    </select>
+                    <label for="floatingSelect">Fabricante</label>
+                </div>
+                <div class="row m-1">
+                    <button type="submit" class="btn btn-success">Enviar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

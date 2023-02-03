@@ -13,7 +13,8 @@ const routes: Routes = [
         children: [
             {path: "", component: HomeComponent},
             {path: 'clients', loadChildren: () => import('./components/clients/clients.module').then(m => m.ClientsModule) },
-            {path: 'servicos', loadChildren: () => import('./components/servicos/servicos.module').then(m => m.ServicosModule) }
+            {path: 'servicos', loadChildren: () => import('./components/servicos/servicos.module').then(m => m.ServicosModule) },
+            {path: 'models', loadChildren: () => import('./components/models/models.module').then(m => m.ModelsModule) }
         ]
     },
     { path: "**", redirectTo: "login"}

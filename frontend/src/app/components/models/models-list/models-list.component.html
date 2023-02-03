@@ -1,0 +1,60 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb alert alert-secondary">
+        <li class="breadcrumb-item" aria-current="page"><a href="#">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Modelos</li>
+    </ol>
+</nav>
+<div class="card mb-4">
+    <div class="card-header">
+        Modelos Cadastrados
+    </div>
+
+    <div class="row p-2">
+        <div class="d-flex">
+            <div class="mt-3 mr-2" style="width: 100%;">
+                <input type="search" class="form-control" id="floatingInput" placeholder="Buscar por modelo"
+                    autocomplete="off" [(ngModel)]="txtModelVehicle">
+            </div>
+            <button class="btn btn-sm btn-primary mt-3 ml-5" (click)="findAllModelVehicles()">
+                <i class="bi bi-search"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-md table-striped table-hover table-bordered" width="100%" cellSpacing="0">
+                <thead>
+                    <tr style="background-color: #CEF6EC;">
+                        <th scope="col">ID</th>
+                        <th scope="col">Modelo</th>
+                        <th scope="col">Fabricante</th>
+                        <th scope="col" width="100" class="text-center">Ações
+                            <button class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="left"
+                                title="Cadastrar serviço" (click)="newFormModelVehicle()">
+                                <i class="bi bi-plus"></i>
+                            </button>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let modelVehicle of modelVehicles">
+                        <th scope="row" class="align-middle">{{ modelVehicle.id }}</th>
+                        <td class="align-middle">{{ modelVehicle.name }}</td>
+                        <td class="align-middle">{{ modelVehicle.brand.name }}</td>
+                        <td>
+                            <a class="btn btn-outline-warning btn-sm" data-toggle="tooltip" data-placement="left"
+                                title="Editar serviço" routerLink="/models/form/{{ modelVehicle.id }}">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
+                            <a class="btn btn-sm btn-outline-danger" data-toggle="tooltip" data-placement="left"
+                                title="Excluir serviço" href="#">
+                                <i class="bi bi-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -21,4 +21,8 @@ export class HomeComponent implements OnInit {
     this.route.navigate(['servicos']);
   }
 
+  public navigateModels(): void {
+    this.route.navigate(['models']);
+  }
+
 }
