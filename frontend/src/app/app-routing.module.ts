@@ -14,7 +14,8 @@ const routes: Routes = [
             {path: "", component: HomeComponent},
             {path: 'clients', loadChildren: () => import('./components/clients/clients.module').then(m => m.ClientsModule) },
             {path: 'servicos', loadChildren: () => import('./components/servicos/servicos.module').then(m => m.ServicosModule) },
-            {path: 'models', loadChildren: () => import('./components/models/models.module').then(m => m.ModelsModule) }
+            {path: 'models', loadChildren: () => import('./components/models/models.module').then(m => m.ModelsModule) },
+            {path: 'orders', loadChildren: () => import('./components/order-service/order-service.module').then(m => m.OrderServiceModule) }
         ]
     },
     { path: "**", redirectTo: "login"}

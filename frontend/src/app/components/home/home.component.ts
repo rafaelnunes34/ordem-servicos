@@ -25,4 +25,8 @@ export class HomeComponent implements OnInit {
     this.route.navigate(['models']);
   }
 
+  public navigateOrders(): void {
+    this.route.navigate(['orders/form']);
+  }
+
 }
