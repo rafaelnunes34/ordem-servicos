@@ -30,8 +30,8 @@ public class ClientService {
 	}
 	
 	@Transactional(readOnly = true)
-	public ClientDTO findById(Long id) {
-		Client entity = repository.findById(id)
+	public ClientDTO findByCpf(String cpf) {
+		Client entity = repository.findByCpf(cpf)
 							.orElseThrow(() -> new ResourceNotFoundException("Recurso não encontrado"));
 		return new ClientDTO(entity);
 	}

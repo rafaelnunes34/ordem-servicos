@@ -33,9 +33,9 @@ public class ClientController {
 		return ResponseEntity.ok().body(service.findAll(pageable));
 	}
 	
-	@GetMapping(value = "/{id}")
-	public ResponseEntity<ClientDTO> findById(@PathVariable Long id) {
-		ClientDTO dto = service.findById(id);
+	@GetMapping(value = "/{cpf}")
+	public ResponseEntity<ClientDTO> findById(@PathVariable String cpf) {
+		ClientDTO dto = service.findByCpf(cpf);
 		return ResponseEntity.ok().body(dto);
 	}
 	
