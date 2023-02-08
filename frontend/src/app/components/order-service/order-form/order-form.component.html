@@ -29,13 +29,13 @@
             <!-- Tabs navs -->
             <ul class="nav nav-tabs nav-fill mb-3" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link active" aria-current="page" href="#">Cliente</a>
+                    <a class="nav-link" [ngClass]="{ 'active': isTabClient }" aria-current="page">Cliente</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Veículo</a>
+                    <a class="nav-link" [ngClass]="{ 'active': isTabVehicle }">Veículo</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link">Serviço</a>
+                    <a class="nav-link" [ngClass]="{ 'active': isTabService }">Serviço</a>
                 </li>
             </ul>
             <!-- Tabs navs -->
@@ -43,33 +43,67 @@
             <!-- Tabs content -->
             <div class="tab-content" id="ex2-content">
 
-                <div class="tab-pane fade" id="ex2-tabs-1" role="tabpanel" aria-labelledby="ex2-tab-1">
+                <!--CLIENT-->
+                <div class="tab-pane fade" [ngClass]="{'show active': isTabClient }" id="ex2-tabs-1" role="tabpanel"
+                    aria-labelledby="ex2-tab-1">
+
                     <div class="row">
-                        <div class="col">
-                            <button type="button" class="btn btn-sm btn-outline-info">Buscar Cliente</button>
+                        <div class="col-sm-6">
+                            <div class="mb-3 mt-3">
+                                <label for="formGroupExampleInput" class="form-label">Buscar Cliente por CPF</label>
+                                <input type="search" class="form-control" id="formGroupExampleInput"
+                                    [(ngModel)]="cpf">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <br class="d-none d-sm-block"><br class="d-none d-sm-block">
+                            <button type="button" class="btn btn-outline-info" (click)="findByClientCpf()">
+                                <i class="bi bi-search"></i>
+                            </button>
                         </div>
                     </div>
                     <div class="mb-3 mt-3">
-                        <label for="formGroupExampleInput" class="form-label">Nome</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput" disabled>
+                        <label for="formGroupExampleInput" class="form-label">ID</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput" disabled
+                            [(ngModel)]="client.id">
                     </div>
-                    <div class="mb-3">
-                        <label for="formGroupExampleInput2" class="form-label">CPF</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput2" disabled>
+                    <div class="mb-3 mt-3">
+                        <label for="formGroupExampleInput" class="form-label">CPF</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput" disabled
+                            [(ngModel)]="client.cpf">
+                    </div>
+                    <div class="mb-3 mt-3">
+                        <label for="formGroupExampleInput" class="form-label">Nome</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput" disabled
+                            [(ngModel)]="client.name">
                     </div>
                     <div class="mb-3">
                         <label for="formGroupExampleInput2" class="form-label">Telefone</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput2" disabled>
+                        <input type="text" class="form-control" id="formGroupExampleInput2" disabled
+                            [(ngModel)]="client.phone">
                     </div>
                     <div class="row m-1">
-                        <button type="button" class="btn btn-primary">Próximo</button>
+                        <button type="button" class="btn btn-primary" (click)="activeTabVehicle()">Próximo</button>
                     </div>
                 </div>
+                <!--CLIENT-->
 
-                <div class="tab-pane fade" id="ex2-tabs-2" role="tabpanel" aria-labelledby="ex2-tab-2">
+                <!--VEHICLE-->
+                <div class="tab-pane fade" [ngClass]="{'show active': isTabVehicle }" id="ex2-tabs-2" role="tabpanel"
+                    aria-labelledby="ex2-tab-2">
                     <div class="row">
-                        <div class="col">
-                            <button type="button" class="btn btn-sm btn-outline-info">Buscar Veículo</button>
+                        <div class="col-sm-6">
+                            <div class="mb-3 mt-3">
+                                <label for="formGroupExampleInput" class="form-label">Buscar veículo por placa</label>
+                                <input type="search" class="form-control" id="formGroupExampleInput"
+                                    [(ngModel)]="cpf">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <br class="d-none d-sm-block"><br class="d-none d-sm-block">
+                            <button type="button" class="btn btn-outline-info" (click)="findByClientCpf()">
+                                <i class="bi bi-search"></i>
+                            </button>
                         </div>
                     </div>
                     <div class="row mt-3">
@@ -104,8 +138,11 @@
                         <button type="button" class="btn btn-primary">Próximo</button>
                     </div>
                 </div>
+                <!--VEHICLE-->
 
-                <div class="tab-pane fade show active" id="ex2-tabs-3" role="tabpanel" aria-labelledby="ex2-tab-3">
+                <!--SERVICE-->
+                <div class="tab-pane fade" [ngClass]="{'show active': isTabService }" id="ex2-tabs-3" role="tabpanel"
+                    aria-labelledby="ex2-tab-3">
                     <div class="row">
                         <div class="col-md-2 col-sm-12">
                             <div class="mb-3">
@@ -143,7 +180,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row"><hr></div>
+                    <div class="row">
+                        <hr>
+                    </div>
                     <div class="table-responsive">
                         <table class="table table-md table-striped table-hover table-bordered" width="100%"
                             cellSpacing="0">
@@ -176,9 +215,28 @@
                         <button type="button" class="btn btn-success">Enviar</button>
                     </div>
                 </div>
+                <!--SERVICE-->
             </div>
             <!-- Tabs content -->
 
+        </div>
+    </div>
+</div>
+ <!-- Modal -->
+ <div class="modal fade" id="vehicleModal" tabindex="-1" aria-labelledby="vehicleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="vehicleModalLabel">Modal title</h1>
+                <!--<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
         </div>
     </div>
 </div>

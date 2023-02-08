@@ -20,6 +20,10 @@ export class ClientService {
     return this.http.get<Client>(`${environment.API_URL}/clients/${clientId}`);
   }
 
+  public findByCpf(clientCpf: string): Observable<Client> {
+    return this.http.get<Client>(`${environment.API_URL}/clients/${clientCpf}`);
+  }
+
   public insert(client: Client): Observable<Client> {
     return this.http.post<Client>(`${environment.API_URL}/clients`, client);
   }
