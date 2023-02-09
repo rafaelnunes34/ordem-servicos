@@ -30,6 +30,15 @@ public class VehicleService {
 	@Autowired
 	private ModelVehicleRepository modelRepository;
 	
+	@Transactional(readOnly = true)
+	public VehicleDTO findVehicleByLicenseByClient(String licensePlate, Long clientId) {
+		
+		Vehicle entity = repository.findByLicensePlateByClient(licensePlate, clientId)
+				.orElseThrow(() -> new ResourceNotFoundException("Recurso não localizado"));
+		
+		return new VehicleDTO(entity);
+	}
+	
 	@Transactional
 	public VehicleDTO insertVehicleToClient(String cpf, VehicleDTO dto) {
 		try {

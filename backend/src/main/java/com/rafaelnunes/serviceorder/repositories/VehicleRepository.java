@@ -19,5 +19,9 @@ public interface VehicleRepository extends JpaRepository<Vehicle, Long> {
 			+ "WHERE obj.client.id = :clientId")
 	List<Vehicle> findVehiclesByIdByClient(Long clientId);
 	
+	@Query("SELECT obj FROM Vehicle obj "
+			+ "JOIN FETCH obj.client "
+			+ "WHERE obj.licensePlate = :licensePlate AND obj.client.id = :clientId")
+	Optional<Vehicle> findByLicensePlateByClient(String licensePlate, Long clientId);
 	
 }

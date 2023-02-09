@@ -40,4 +40,10 @@ public class VehicleController {
 		List<VehicleDTO> list = service.findVehiclesByClient(clientId);
 		return ResponseEntity.ok().body(list);
 	}
+	
+	@GetMapping(value = "/{licensePlate}/{clientId}")
+	public ResponseEntity<VehicleDTO> findVehicleByLicensePlateByClient(@PathVariable String licensePlate, @PathVariable Long clientId) {
+		VehicleDTO dto = service.findVehicleByLicenseByClient(licensePlate, clientId);
+		return ResponseEntity.ok().body(dto);
+	}
 }
